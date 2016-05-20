@@ -1,0 +1,46 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="../js/matrix.js"></script>
+
+<dom-module id="sustenagro-matrix">
+    <template>
+        <style>
+            h1{
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                font-weight: bold;
+                font-size: 1.5em;
+            }
+            
+            h2{
+                font-family: 'Arial Narrow Bold', sans-serif;
+                margin-top: -15px;
+                font-size: 0.8em;
+                border-bottom: 5px solid#0f0f0f;
+                padding-bottom: 15px; 
+            }
+        </style>
+                
+        <h1>{{title}}</h1>
+        
+    </template> 
+     
+    <script>
+        Polymer({
+            is: "sustenagro-matrix",
+            properties: {
+                title: String,
+                params: Object,
+                space: String,
+                text: String
+            },
+            ready: function() {
+            Matrix(this.space, this.params);
+            }
+        });
+        
+
+    </script>
+</dom-module>
+
+
+
