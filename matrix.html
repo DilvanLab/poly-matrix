@@ -1,6 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="./js/matrix.js"></script>
+<script src="js/matrix.js"></script>
 
 <dom-module id="sustenagro-matrix">
     <template>
@@ -40,7 +40,42 @@
                 }
             },
             ready: function() {
-            Matrix(this.space, this.params);
+                var x = Matrix(this.space, this.params);
+              
+                var recomendations = [];
+        
+                recomendations.push("Avaliação da eficiência: balanço da eficiência ‘tecnológica – produção – custo’ desfavorável ao sistema de produção de cana / sistema de produção de cana na fase inicial de implementação (avaliação de sustentabilidade comprometida) ou com muito baixa sustentabilidade – sistema de produção de cana não recomendado.");
+            
+                recomendations.push("Avaliação da eficiência: balanço da eficiência ‘tecnológica – produção – custo’ desfavorável ao sistema de produção de cana / sistema de produção de cana com baixa sustentabilidade – recomendam-se ações corretivas.");
+            
+                recomendations.push("Avaliação da eficiência: balanço da eficiência ‘tecnológica – produção – custo’ desfavorável ao sistema de produção de cana / Avaliação da sustentabilidade com médio desempenho – recomenda-se acompanhamento com restrições.");
+            
+                recomendations.push("Avaliação da eficiência: balanço da eficiência ‘tecnológica – produção – custo’ desfavorável ao sistema de produção de cana / Avaliação da sustentabilidade com bom desempenho – sistema de produção de cana recomendado.");
+            
+                recomendations.push("Avaliação da eficiência: balanço da eficiência ‘tecnológica – produção – custo’ propícia para o sistema cana / Avaliação da sustentabilidade: sistema de produção de cana na fase inicial de implementação ou com muito baixa sustentabilidade – gerenciamento recomendado com restrições.");
+            
+                recomendations.push("Avaliação da eficiência: balanço da eficiência ‘tecnológica – produção – custo’ propícia para o sistema cana / Avaliação da sustentabilidade: com baixo desempenho - recomenda-se ações corretivas.");
+            
+                recomendations.push("Avaliação da eficiência: balanço da eficiência ‘tecnológica – produção – custo’ propícia para o sistema cana / Avaliação da sustentabilidade: com médio desempenho - monitoramento e gerenciamento recomendado.");
+            
+                recomendations.push("Avaliação da eficiência: balanço da eficiência ‘tecnológica – produção – custo’ propícia para o sistema cana / Avaliação da sustentabilidade: com bom desempenho – sistema de produção de cana recomendado.");
+            
+                recomendations.push("Avaliação da eficiência: balanço da eficiência ‘tecnológica – produção – custo’ favorável para o sistema cana – recomenda-se investimentos no sistema avaliado / Avaliação da sustentabilidade: com muito baixo desempenho – recomenda-se ações corretivas.");
+            
+                recomendations.push("Avaliação da eficiência: balanço da eficiência ‘tecnológica – produção – custo’ favorável para o sistema cana – recomenda-se investimentos no sistema avaliado / Avaliação da sustentabilidade: com baixo desempenho - gerenciamento recomendado.");
+            
+                recomendations.push("Avaliação da eficiência: balanço da eficiência ‘tecnológica – produção – custo’ favorável para o sistema cana – recomenda-se investimentos no sistema avaliado / Avaliação da sustentabilidade: com médio desempenho – monitoramento recomendado.");
+            
+                recomendations.push("Avaliação da eficiência: balanço da eficiência ‘tecnológica – produção – custo’ favorável para o sistema cana – recomenda-se investimentos no sistema avaliado / Avaliação da sustentabilidade: com bom desempenho - sistema de produção de cana fortemente recomendado.");
+              
+              
+                var recomendation2 = (x.quadrant-1 >= 0 && x.quadrant-1 < recomendations.length) ? recomendations[x.quadrant-1] : "Não tem recomendações";
+                
+                $(this.space).append("<p>Índice da sustentabilidade: <b>"+x.valuex+"</b></p>");
+                $(this.space).append("<p>Índice da sustentabilidade: <b>"+x.valuey+"</b></p>");
+                $(this.space).append("<p>Quadrante: <b>"+x.quadrant+"</b></p>");
+                $(this.space).append("<p>Recomendação: <b>"+recomendation2+"</b></p>");
+                
             }
         });
         
