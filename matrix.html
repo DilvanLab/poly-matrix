@@ -28,10 +28,16 @@
         Polymer({
             is: "sustenagro-matrix",
             properties: {
-                title: String,
+                title: {
+                  type: String,
+                  value: " "
+                },
                 params: Object,
                 space: String,
-                text: String
+                text: {
+                  type: String,
+                  value: " "
+                }
             },
             ready: function() {
             Matrix(this.space, this.params);
