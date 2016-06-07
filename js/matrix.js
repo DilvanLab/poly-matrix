@@ -104,6 +104,9 @@ function Matrix(container, parameters){
 
     var recid = (rqy*qds[0])+rqx
     var recomendation = (recid >= 0 && recid < recomendations.length) ? recomendations[recid] : "Não tem recomendações";
-
-    return {'quadrant': recid+1, 'recomendation': recomendation}
+	
+	x = formatFloat(x);
+	y = formatFloat(y);
+	
+    return {'quadrant': recid+1, 'recomendation': recomendation, 'valuex': x, 'valuey': y}
 }
